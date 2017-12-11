@@ -16,6 +16,7 @@ public class AssociationEntity {
     private Timestamp foundedTime;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     public long getId() {
         return id;
