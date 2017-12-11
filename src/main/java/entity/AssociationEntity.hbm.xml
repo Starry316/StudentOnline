@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="entity.AssociationEntity" table="association" schema="studentonline">
+        <id name="id">
+            <column name="id" sql-type="bigint(20)"/>
+        </id>
+        <property name="associationName">
+            <column name="AssociationName" sql-type="varchar(255)"/>
+        </property>
+        <property name="managerId">
+            <column name="ManagerId" sql-type="bigint(20) unsigned"/>
+        </property>
+        <property name="introduction">
+            <column name="Introduction" sql-type="text" not-null="true"/>
+        </property>
+        <property name="foundedTime">
+            <column name="FoundedTime" sql-type="timestamp" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

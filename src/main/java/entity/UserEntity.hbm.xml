@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="entity.UserEntity" table="user" schema="studentonline">
+        <id name="id">
+            <column name="id" sql-type="bigint(20) unsigned"/>
+        </id>
+        <property name="userName">
+            <column name="UserName" sql-type="varchar(255)"/>
+        </property>
+        <property name="passWord">
+            <column name="PassWord" sql-type="varchar(255)"/>
+        </property>
+        <property name="studentId">
+            <column name="StudentId" sql-type="bigint(20) unsigned" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

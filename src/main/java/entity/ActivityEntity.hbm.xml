@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="entity.ActivityEntity" table="activity" schema="studentonline">
+        <id name="id">
+            <column name="id" sql-type="bigint(20)"/>
+        </id>
+        <property name="activityName">
+            <column name="ActivityName" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="activityPlace">
+            <column name="ActivityPlace" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="activityTime">
+            <column name="ActivityTime" sql-type="timestamp" not-null="true"/>
+        </property>
+        <property name="activityContent">
+            <column name="ActivityContent" sql-type="text" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
