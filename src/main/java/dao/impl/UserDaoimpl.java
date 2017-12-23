@@ -2,8 +2,9 @@ package dao.impl;
 
 import dao.IUserDao;
 import entity.UserEntity;
+import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
-
+import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.List;
@@ -25,6 +26,10 @@ public class UserDaoimpl extends BaseDaoimpl<UserEntity,Long> implements IUserDa
 
     @Override
     public String findUserByName(String username) {
+        String hql = "from UserEntity e where e.userName = ?";// ？为占位符，用 setParameter(index , value)替换？的值
+        Query query=this.getSession().createQuery(hql);
+        query.setParameter(0, username);
+        List<UserEntity> list = (List<UserEntity>)query.list(); //若list.size()不为0，说明用户名重复
         return null;
     }
 
@@ -35,6 +40,7 @@ public class UserDaoimpl extends BaseDaoimpl<UserEntity,Long> implements IUserDa
     }
 
     @Override
+    @Transactional
     public void updateInfo(UserEntity user) {
          super.update(user);
     }

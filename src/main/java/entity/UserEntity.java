@@ -14,6 +14,7 @@ public class UserEntity {
     private Long studentId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     public long getId() {
         return id;
