@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2017-12-11 14:30:53
+Date: 2017-12-25 20:15:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,10 +23,12 @@ CREATE TABLE `activity` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `ActivityName` varchar(255) DEFAULT NULL,
   `ActivityPlace` varchar(255) DEFAULT NULL,
-  `ActivityTime` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `ActivityStartTime` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `ActivityContent` text,
+  `ActivityEndTime` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `AssociationId` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of activity
@@ -43,11 +45,13 @@ CREATE TABLE `association` (
   `Introduction` text,
   `FoundedTime` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of association
 -- ----------------------------
+INSERT INTO `association` VALUES ('1', 'name', '123', 'introduction', '2017-12-11 14:49:46');
+INSERT INTO `association` VALUES ('2', 'name', '123', 'introduction', '2017-12-11 14:50:44');
 
 -- ----------------------------
 -- Table structure for user
@@ -58,11 +62,14 @@ CREATE TABLE `user` (
   `UserName` varchar(255) NOT NULL,
   `PassWord` varchar(255) NOT NULL,
   `StudentId` bigint(20) unsigned DEFAULT NULL,
+  `Telephone` varchar(13) DEFAULT NULL,
+  `Email` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', '张三', '123456', '123456789');
+INSERT INTO `user` VALUES ('1', '张三', '123456', '123456789', null, null);
+INSERT INTO `user` VALUES ('2', 'lisi', '111', '131511445', null, null);
 SET FOREIGN_KEY_CHECKS=1;

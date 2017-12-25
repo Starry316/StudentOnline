@@ -17,5 +17,11 @@
         <property name="studentId">
             <column name="StudentId" sql-type="bigint(20) unsigned" not-null="true"/>
         </property>
+        <property name="telephone">
+            <column name="Telephone" sql-type="varchar(13)" length="13" not-null="true"/>
+        </property>
+        <property name="email">
+            <column name="Email" sql-type="varchar(255)" not-null="true"/>
+        </property>
     </class>
 </hibernate-mapping>

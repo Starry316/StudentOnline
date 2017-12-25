@@ -14,11 +14,17 @@
         <property name="activityPlace">
             <column name="ActivityPlace" sql-type="varchar(255)" not-null="true"/>
         </property>
-        <property name="activityTime">
-            <column name="ActivityTime" sql-type="timestamp" not-null="true"/>
-        </property>
         <property name="activityContent">
             <column name="ActivityContent" sql-type="text" not-null="true"/>
+        </property>
+        <property name="activityStartTime">
+            <column name="ActivityStartTime" sql-type="timestamp" not-null="true"/>
+        </property>
+        <property name="activityEndTime">
+            <column name="ActivityEndTime" sql-type="timestamp" not-null="true"/>
+        </property>
+        <property name="associationId">
+            <column name="AssociationId" sql-type="bigint(20)" not-null="true"/>
         </property>
     </class>
 </hibernate-mapping>
