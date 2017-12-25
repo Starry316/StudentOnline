@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93da3281-afec-4997-b940-d8e11b3eb6f8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/util/ObjectToJSON.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/ActivityController.java" afterPath="$PROJECT_DIR$/src/main/java/controller/ActivityController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/impl/ActivityDaoimpl.java" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/ActivityDaoimpl.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -134,8 +131,8 @@
       <file leaf-file-name="ActivityController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/ActivityController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="616">
-              <caret line="69" column="5" lean-forward="true" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+            <state relative-caret-position="1025">
+              <caret line="41" column="32" lean-forward="false" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2401#2402#0" expanded="true" />
@@ -1360,8 +1357,16 @@
       <workItem from="1513422623475" duration="1249000" />
       <workItem from="1513676549036" duration="6324000" />
       <workItem from="1513761747885" duration="1180000" />
-      <workItem from="1514204646164" duration="6907000" />
+      <workItem from="1514204646164" duration="7197000" />
     </task>
+    <task id="LOCAL-00001" summary="增加了activity相关方法和实现">
+      <created>1514211863887</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1514211863888</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1397,7 +1402,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34469000" />
+    <option name="totallyTimeSpent" value="34759000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -1445,6 +1450,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="增加了activity相关方法和实现" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加了activity相关方法和实现" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1884,8 +1893,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/ActivityController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="69" column="5" lean-forward="true" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+        <state relative-caret-position="1025">
+          <caret line="41" column="32" lean-forward="false" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2401#2402#0" expanded="true" />
