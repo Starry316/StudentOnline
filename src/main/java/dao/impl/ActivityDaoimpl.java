@@ -19,7 +19,7 @@ public class ActivityDaoimpl extends BaseDaoimpl<ActivityEntity,Long> implements
     public List<ActivityEntity> queryPastActivities() {
         Date time = new java.util.Date();
         Timestamp timestamp = new Timestamp(time.getTime());
-        String hql = "from ActivityEntity e where e.activityTime < ?";
+        String hql = "from ActivityEntity e where e.activityEndTime < ?";
         Query query=this.getSession().createQuery(hql);
         query.setParameter(0, timestamp);
         List<ActivityEntity> list = (List<ActivityEntity>)query.list();
@@ -30,7 +30,7 @@ public class ActivityDaoimpl extends BaseDaoimpl<ActivityEntity,Long> implements
     public List<ActivityEntity> queryFutureActivities() {
         Date time = new java.util.Date();
         Timestamp timestamp = new Timestamp(time.getTime());
-        String hql = "from ActivityEntity e where e.activityTime > ?";
+        String hql = "from ActivityEntity e where e.activityStartTime >= ?";
         Query query=this.getSession().createQuery(hql);
         query.setParameter(0, timestamp);
         List<ActivityEntity> list = (List<ActivityEntity>)query.list();
