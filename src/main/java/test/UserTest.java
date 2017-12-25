@@ -3,6 +3,7 @@ package test;
 
 import com.alibaba.fastjson.JSON;
 import dao.IActivityDao;
+import dao.IAssociationDao;
 import dao.IUserDao;
 import entity.AssociationEntity;
 import entity.UserEntity;
@@ -26,6 +27,8 @@ public class UserTest {
 
     @Resource(name = "userDao")
     IUserDao userDao;
+    @Resource(name = "associationDao")
+    IAssociationDao associationDao;
     @Resource(name = "associationService")
     IAssociationService associationService;
     @Resource(name ="activityDao")
@@ -42,11 +45,8 @@ public class UserTest {
 //        associationEntity.setFoundedTime(timestamp);
 //        associationEntity.setIntroduction("introduction");
 //        associationEntity.setManagerId(123);
-        UserEntity userEntity =new UserEntity();
-        userEntity.setUserName("lisi");
-        userEntity.setPassWord("111");
-        userEntity.setStudentId(131511445L);
 
-        System.out.print( userDao.addUser(userEntity));
+
+        System.out.print( associationDao.getByCollege(1).get(0).getAssociationName());
     }
 }
