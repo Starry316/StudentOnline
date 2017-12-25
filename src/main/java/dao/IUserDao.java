@@ -20,8 +20,9 @@ public interface IUserDao {
      * @return 新用户id
      */
     Long addUser(UserEntity user);
-    String findUserByName(String username);
-    List<UserEntity> list();
+    boolean findUserByName(String username);
+    //List<UserEntity> list();
     void updateInfo(UserEntity user);
     void deleteUserById(long id);
+    boolean userLogin(UserEntity user);
 }

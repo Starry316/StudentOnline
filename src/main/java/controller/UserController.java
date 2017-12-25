@@ -43,21 +43,28 @@ public class UserController {
     }
     /**用户名查重*/
     @RequestMapping("/findUser")
-    public @ResponseBody Map<String,Object> findUserByName(HttpServletRequest request){
-        Map<String,Object> map = new HashedMap();
+    public @ResponseBody boolean findUserByName(HttpServletRequest request){
         String userName = request.getParameter("username");
-        String msg = userDao.findUserByName(userName);
-        map.put("msg",msg);
-        return map;
+        boolean result = userDao.findUserByName(userName);
+        return result;
     }
 
-    @RequestMapping("/listUsers")
+    @RequestMapping("/login")
+    public @ResponseBody boolean  userLogin(String userName,String passWord){
+        UserEntity user = new UserEntity();
+        user.setUserName(userName);
+        user.setPassWord(passWord);
+        boolean result = userDao.userLogin(user);
+        return result;
+    }
+    /*@RequestMapping("/listUsers")
     public String listAll(Map<String,Object> model){
         //Map<String,Object> model 这种形式的返回model中的属性可以任意。
         List<UserEntity> userList =userDao.list();
         model.put("userList", userList);
         return "UsersList";
-    }
+    }*/
+
 
     @RequestMapping("/userUpdate")
     public void update(long id, Model model){
@@ -71,8 +78,10 @@ public class UserController {
         userDao.updateInfo(user);
     }
 
-    @RequestMapping("/userDlete")
+    @RequestMapping("/userDelete")
     public void delete(long id){
         userDao.deleteUserById(id);
     }
+
+
 }

@@ -25,19 +25,17 @@ public class UserDaoimpl extends BaseDaoimpl<UserEntity,Long> implements IUserDa
     }
 
     @Override
-    public String findUserByName(String username) {
+    public boolean findUserByName(String username) {
         String hql = "from UserEntity e where e.userName = ?";// ？为占位符，用 setParameter(index , value)替换？的值
         Query query=this.getSession().createQuery(hql);
         query.setParameter(0, username);
         List<UserEntity> list = (List<UserEntity>)query.list(); //若list.size()不为0，说明用户名重复
-        return null;
+        if(list.size()>0)
+            return true;
+        else
+            return false;
     }
 
-    @Override
-    public List<UserEntity> list() {        //不知道怎么写
-        //return super.list();
-        return null;
-    }
 
     @Override
     @Transactional
@@ -48,5 +46,18 @@ public class UserDaoimpl extends BaseDaoimpl<UserEntity,Long> implements IUserDa
     @Override
     public void deleteUserById(long id) {
         super.delete(id);
+    }
+
+    @Override
+    public boolean userLogin(UserEntity user) {
+        String hql = "from UserEntity e where e.userName = ? and e.passWord = ?";
+        Query query = this.getSession().createQuery(hql);
+        query.setParameter(0,user.getUserName());
+        query.setParameter(1,user.getPassWord());
+        List<UserEntity> list = (List<UserEntity>)query.list();
+        if(list.size()>1)
+            return true;
+        else
+            return false;
     }
 }
