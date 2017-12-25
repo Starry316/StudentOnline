@@ -20,5 +20,14 @@
         <property name="foundedTime">
             <column name="FoundedTime" sql-type="timestamp" not-null="true"/>
         </property>
+        <property name="college">
+            <column name="College" sql-type="int(10) unsigned" not-null="true"/>
+        </property>
+        <property name="type">
+            <column name="Type" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="member">
+            <column name="Member" sql-type="int(11)" not-null="true"/>
+        </property>
     </class>
 </hibernate-mapping>

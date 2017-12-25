@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Starry on 2017/12/11.
+ * Created by Starry on 2017/12/25.
  */
 @Entity
 @Table(name = "association", schema = "studentonline", catalog = "")
@@ -14,6 +14,9 @@ public class AssociationEntity {
     private long managerId;
     private String introduction;
     private Timestamp foundedTime;
+    private Integer college;
+    private String type;
+    private Integer member;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -66,6 +69,36 @@ public class AssociationEntity {
         this.foundedTime = foundedTime;
     }
 
+    @Basic
+    @Column(name = "College", nullable = true)
+    public Integer getCollege() {
+        return college;
+    }
+
+    public void setCollege(Integer college) {
+        this.college = college;
+    }
+
+    @Basic
+    @Column(name = "Type", nullable = true, length = 255)
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @Basic
+    @Column(name = "Member", nullable = true)
+    public Integer getMember() {
+        return member;
+    }
+
+    public void setMember(Integer member) {
+        this.member = member;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -79,6 +112,9 @@ public class AssociationEntity {
             return false;
         if (introduction != null ? !introduction.equals(that.introduction) : that.introduction != null) return false;
         if (foundedTime != null ? !foundedTime.equals(that.foundedTime) : that.foundedTime != null) return false;
+        if (college != null ? !college.equals(that.college) : that.college != null) return false;
+        if (type != null ? !type.equals(that.type) : that.type != null) return false;
+        if (member != null ? !member.equals(that.member) : that.member != null) return false;
 
         return true;
     }
@@ -90,6 +126,9 @@ public class AssociationEntity {
         result = 31 * result + (int) (managerId ^ (managerId >>> 32));
         result = 31 * result + (introduction != null ? introduction.hashCode() : 0);
         result = 31 * result + (foundedTime != null ? foundedTime.hashCode() : 0);
+        result = 31 * result + (college != null ? college.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (member != null ? member.hashCode() : 0);
         return result;
     }
 }

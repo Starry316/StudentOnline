@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2017-12-25 20:15:40
+Date: 2017-12-25 20:34:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -44,14 +44,17 @@ CREATE TABLE `association` (
   `ManagerId` bigint(20) unsigned NOT NULL,
   `Introduction` text,
   `FoundedTime` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `College` int(10) unsigned DEFAULT NULL,
+  `Type` varchar(255) DEFAULT NULL,
+  `Member` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of association
 -- ----------------------------
-INSERT INTO `association` VALUES ('1', 'name', '123', 'introduction', '2017-12-11 14:49:46');
-INSERT INTO `association` VALUES ('2', 'name', '123', 'introduction', '2017-12-11 14:50:44');
+INSERT INTO `association` VALUES ('1', 'name', '123', 'introduction', '2017-12-11 14:49:46', null, null, null);
+INSERT INTO `association` VALUES ('2', 'name', '123', 'introduction', '2017-12-11 14:50:44', null, null, null);
 
 -- ----------------------------
 -- Table structure for user
