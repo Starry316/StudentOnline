@@ -13,12 +13,14 @@ import net.sf.ezmorph.bean.BeanMorpher;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.util.JSONUtils;
+import org.springframework.web.bind.annotation.ResponseBody;
 import util.ObjectToJSON;
 
 /**
  * Created by Starry on 2017/12/23.
  */
 @Controller
+@RequestMapping("/activity")
 public class ActivityController {
     @Resource(name="activityDao")
     IActivityDao activityDao;
@@ -57,7 +59,8 @@ public class ActivityController {
     }
 
     @RequestMapping("/updateInfo")
-    public void updateInfo(String info[]){
+    @ResponseBody
+    public boolean updateInfo(String info[]){
         ActivityEntity activity = new ActivityEntity();
         activity.setId(Long.parseLong(info[0]));
         activity.setActivityName(info[1]);
@@ -67,10 +70,12 @@ public class ActivityController {
         activity.setActivityEndTime(Timestamp.valueOf(info[5]));
         activity.setAssociationId(Long.parseLong(info[6]));
         activityDao.updateInfo(activity);
+        return true;
     }
 
     @RequestMapping("/deleteActivityById")
-    public void deleteActivityEntityById(long id){
-        activityDao.deleteActivityEntityById(id);
+    @ResponseBody
+    public boolean deleteActivityEntityById(long id){
+        activityDao.deleteActivityEntityById(id);return true;
     }
 }

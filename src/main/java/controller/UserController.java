@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import service.impl.BaseServiceimpl;
@@ -23,9 +24,11 @@ import java.util.Objects;
  */
 @Controller
 @ContextConfiguration({"classpath:applicationContext.xml"})
+@RequestMapping("/user")
 public class UserController {
     @Resource(name ="userDao")
     IUserDao userDao;
+
     @RequestMapping("/get")
     ModelAndView getUser(){
         ModelAndView modelAndView = new ModelAndView("show");
@@ -34,12 +37,16 @@ public class UserController {
     }
     /**添加用户*/
     @RequestMapping("/addUser")
-    public String addUser(String userName, String password, UserEntity user){
+    public String addUser(HttpServletRequest request,HttpServletRequest response){
+        String userName = request.getParameter("username");
+        String passWord = request.getParameter("password");
         System.out.println(userName);
-        System.out.println(password);
-        System.out.println(""+user);
+        System.out.println(passWord);
+        UserEntity user = new UserEntity();
+        user.setUserName(userName);
+        user.setPassWord(passWord);
         userDao.addUser(user);
-        return "success";
+        return "1";
     }
     /**用户名查重*/
     @RequestMapping("/findUser")
@@ -50,12 +57,17 @@ public class UserController {
     }
 
     @RequestMapping("/login")
-    public @ResponseBody boolean  userLogin(String userName,String passWord){
+    public @ResponseBody String  userLogin(String userName,String passWord){
         UserEntity user = new UserEntity();
+        //String userName = request.getParameter("username");
+        //String passWord = request.getParameter("password");
         user.setUserName(userName);
         user.setPassWord(passWord);
         boolean result = userDao.userLogin(user);
-        return result;
+        if(result)
+            return "1";
+        else
+            return "0";
     }
     /*@RequestMapping("/listUsers")
     public String listAll(Map<String,Object> model){
@@ -67,20 +79,25 @@ public class UserController {
 
 
     @RequestMapping("/userUpdate")
-    public void update(long id, Model model){
+    @ResponseBody
+    public boolean update(long id, Model model){
         UserEntity user = userDao.queryById(id);
         model.addAttribute(user);
+        return true;
     }
 
     @RequestMapping("/updateInfo")
-    public void updateInfo(HttpServletRequest request,UserEntity user){
+    @ResponseBody
+    public boolean updateInfo(HttpServletRequest request,UserEntity user){
         System.out.println(user.getUserName());
         userDao.updateInfo(user);
+        return  true;
     }
 
     @RequestMapping("/userDelete")
-    public void delete(long id){
-        userDao.deleteUserById(id);
+    @ResponseBody
+    public boolean delete(long id){
+        userDao.deleteUserById(id);return true;
     }
 
 

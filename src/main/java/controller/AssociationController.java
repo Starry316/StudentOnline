@@ -11,6 +11,7 @@ import javax.annotation.Resource;
  * Created by Starry on 2017/12/25.
  */
 @Controller
+@RequestMapping("/association")
 public class AssociationController {
     @Resource(name = "associationDao")
     IAssociationDao associationDao;
