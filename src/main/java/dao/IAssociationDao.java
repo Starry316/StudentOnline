@@ -17,7 +17,35 @@ public interface IAssociationDao {
         软件园校区----5
         兴隆山校区----6
         青岛校区------7
+
+        type字段说明：
+        兴趣爱好-----1
+        社会实践-----2
+        科技创新-----3
+        综合---------4
+        其他---------5
      */
+
+
+    /**
+     * 查询所有社团
+     * @return
+     */
+    List<AssociationEntity> getAll();
+
+    /**
+     * 通过id获取社团信息
+     * @param id
+     * @return
+     */
+    AssociationEntity searchById(long id);
+
+    /**
+     * 通过名称获取社团信息
+     * @param name
+     * @return
+     */
+     AssociationEntity getByName(String name);
     /**
      * 存储新社团
      * @param associationEntity

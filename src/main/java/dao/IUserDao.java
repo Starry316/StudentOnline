@@ -25,4 +25,6 @@ public interface IUserDao {
     void updateInfo(UserEntity user);
     void deleteUserById(long id);
     boolean userLogin(UserEntity user);
+
+    UserEntity get(long id);
 }

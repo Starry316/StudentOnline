@@ -3,18 +3,21 @@ package controller;
 import dao.IBaseDao;
 import dao.IUserDao;
 import entity.UserEntity;
+import net.sf.json.JSONObject;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import service.impl.BaseServiceimpl;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -24,11 +27,9 @@ import java.util.Objects;
  */
 @Controller
 @ContextConfiguration({"classpath:applicationContext.xml"})
-@RequestMapping("/user")
 public class UserController {
     @Resource(name ="userDao")
     IUserDao userDao;
-
     @RequestMapping("/get")
     ModelAndView getUser(){
         ModelAndView modelAndView = new ModelAndView("show");
@@ -37,16 +38,12 @@ public class UserController {
     }
     /**添加用户*/
     @RequestMapping("/addUser")
-    public String addUser(HttpServletRequest request,HttpServletRequest response){
-        String userName = request.getParameter("username");
-        String passWord = request.getParameter("password");
+    public String addUser(String userName, String password, UserEntity user){
         System.out.println(userName);
-        System.out.println(passWord);
-        UserEntity user = new UserEntity();
-        user.setUserName(userName);
-        user.setPassWord(passWord);
+        System.out.println(password);
+        System.out.println(""+user);
         userDao.addUser(user);
-        return "1";
+        return "success";
     }
     /**用户名查重*/
     @RequestMapping("/findUser")
@@ -57,17 +54,12 @@ public class UserController {
     }
 
     @RequestMapping("/login")
-    public @ResponseBody String  userLogin(String userName,String passWord){
+    public @ResponseBody boolean  userLogin(String userName,String passWord){
         UserEntity user = new UserEntity();
-        //String userName = request.getParameter("username");
-        //String passWord = request.getParameter("password");
         user.setUserName(userName);
         user.setPassWord(passWord);
         boolean result = userDao.userLogin(user);
-        if(result)
-            return "1";
-        else
-            return "0";
+        return result;
     }
     /*@RequestMapping("/listUsers")
     public String listAll(Map<String,Object> model){
@@ -79,26 +71,26 @@ public class UserController {
 
 
     @RequestMapping("/userUpdate")
-    @ResponseBody
-    public boolean update(long id, Model model){
+    public void update(long id, Model model){
         UserEntity user = userDao.queryById(id);
         model.addAttribute(user);
-        return true;
     }
 
     @RequestMapping("/updateInfo")
-    @ResponseBody
-    public boolean updateInfo(HttpServletRequest request,UserEntity user){
+    public void updateInfo(HttpServletRequest request,UserEntity user){
         System.out.println(user.getUserName());
         userDao.updateInfo(user);
-        return  true;
     }
 
     @RequestMapping("/userDelete")
-    @ResponseBody
-    public boolean delete(long id){
-        userDao.deleteUserById(id);return true;
+    public void delete(long id){
+        userDao.deleteUserById(id);
     }
 
+    @RequestMapping("/getManager/{id}")
+    public void getManager(@PathVariable long id, HttpServletResponse response) throws IOException {
+        JSONObject jsonObject =JSONObject.fromObject(userDao.get(id));
+        response.getWriter().print(jsonObject);
+    }
 
 }

@@ -60,4 +60,9 @@ public class UserDaoimpl extends BaseDaoimpl<UserEntity,Long> implements IUserDa
         else
             return false;
     }
+
+    @Override
+    public UserEntity get(long id) {
+        return super.get(id);
+    }
 }

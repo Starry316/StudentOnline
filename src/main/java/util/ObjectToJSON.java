@@ -15,6 +15,7 @@ import java.util.List;
 public class ObjectToJSON {
     public JSONArray  ListToJSON(List list) {
         JSONArray jsonArray = JSONArray.fromObject(list);
+        ;
         return jsonArray;
     }
 }

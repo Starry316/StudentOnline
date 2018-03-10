@@ -26,5 +26,17 @@
         <property name="associationId">
             <column name="AssociationId" sql-type="bigint(20)" not-null="true"/>
         </property>
+        <property name="managerId">
+            <column name="ManagerId" sql-type="bigint(20) unsigned"/>
+        </property>
+        <property name="signInWay">
+            <column name="SignInWay" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="target">
+            <column name="Target" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="college">
+            <column name="College" sql-type="int(10)" not-null="true"/>
+        </property>
     </class>
 </hibernate-mapping>

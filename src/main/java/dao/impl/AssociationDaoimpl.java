@@ -19,6 +19,12 @@ public class AssociationDaoimpl extends BaseDaoimpl<AssociationEntity,Long> impl
         return super.save(associationEntity);
     }
 
+    @Override
+    public List<AssociationEntity> getAll() {
+        String hql="from AssociationEntity e";
+        Query query=this.getSession().createQuery(hql);
+        return query.list();
+    }
 
     @Override
     public List<AssociationEntity> searchByName(String keyWord) {
@@ -46,6 +52,21 @@ public class AssociationDaoimpl extends BaseDaoimpl<AssociationEntity,Long> impl
         String hql="from AssociationEntity e where e.type = "+type+"and e.college = "+college+"order by e.member";
         Query query=this.getSession().createQuery(hql);
         return query.list();
+    }
+
+    @Override
+    public AssociationEntity searchById(long id) {
+        return super.get(id);
+    }
+
+    @Override
+    public AssociationEntity getByName(String name) {
+        String hql="from AssociationEntity e where e.associationName = \''"+name+"\'";
+        Query query=this.getSession().createQuery(hql);
+        List<AssociationEntity> list = query.list();
+        if (list.size()==0)return null ;
+        else return list.get(0);
+
     }
 
     @Override

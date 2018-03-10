@@ -13,13 +13,16 @@ public interface IActivityDao {
      * @return 未来活动的list
      */
     List<ActivityEntity> queryFutureActivities();
-
+    /**
+     * 查询正在进行的活动
+     * @return
+     */
+    List<ActivityEntity> queryActivities();
     /**
      * 查询所有过去活动
      * @return 过去活动的list
      */
     List<ActivityEntity> queryPastActivities();
-
     /**
      * 添加新活动
      * @param activityEntity
@@ -38,4 +41,32 @@ public interface IActivityDao {
      * @param id
      */
     void deleteActivityEntityById(long id);
+
+    /**
+     * 通过名称查询
+     * @param keyword
+     * @return
+     */
+    List<ActivityEntity>search(String keyword);
+
+    /**
+     * 通过社团id查询活动
+     * @param associtionId
+     * @return
+     */
+    List<ActivityEntity>getByAssocitionId(long associtionId);
+
+    /**
+     * 通过id查询
+     * @param id
+     * @return
+     */
+    ActivityEntity getById(long id);
+
+    /**
+     * 通过名称查询
+     * @param name
+     * @return
+     */
+    ActivityEntity getByName(String name);
 }
